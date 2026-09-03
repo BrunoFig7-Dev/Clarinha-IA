@@ -1,0 +1,989 @@
+<!--
+================================================================================
+ PROJETO: Ecossistema Clarinha IA - Apresentação Executiva & Diagnóstico Comercial
+ CONCEPÇÃO, ENGENHARIA DE PROMPT & ARQUITETURA DE DADOS: Victor Colmán
+ DESIGN DE INTERFACE & DESENVOLVIMENTO FRONT-END: Victor Colmán (Inovall)
+ DATA: Compilado Fases 1 e 2 (Junho - Agosto / 2026)
+ CLIENTE / CONTEXTO: Bom Todo / Guaraves
+ 
+ CONFIDENCIALIDADE:
+ Este documento contém informações estratégicas, análises de rotas e dados de 
+ faturamento confidenciais de uso corporativo restrito.
+ 
+ PROPRIEDADE INTELECTUAL & AUTORIA:
+ A metodologia de análise, a modelagem dos diagnósticos de inteligência comercial,
+ a engenharia de prompts, os componentes de software e o layout visual interativo 
+ foram idealizados, arquitetados e desenvolvidos por Victor Colmán (Inovall).
+ Direitos de autoria moral e intelectual reservados.
+================================================================================
+-->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Victor Colmán">
+    <meta name="creator" content="Victor Colmán - Inovall">
+    <meta name="copyright" content="© 2026 Victor Colmán / Inovall. Todos os direitos reservados.">
+    <title>Clarinha IA - Compilado Fase 1 & 2 (Bom Todo / Inovall)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bomtodo: {
+                            blue: '#0057B8',
+                            darkblue: '#003D82',
+                            red: '#E53935',
+                            yellow: '#FFC107',
+                            lightBg: '#F8FAFC',
+                            cardBg: '#FFFFFF',
+                            textDark: '#1E293B',
+                            textMuted: '#64748B'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+            color: #1E293B;
+        }
+        
+        .slide {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(8px);
+        }
+        
+        .slide.active {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .custom-scroll::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: 4px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: rgba(0, 87, 184, 0.25);
+            border-radius: 4px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 87, 184, 0.5);
+        }
+
+        /* Regras para Impressão e Exportação em PDF */
+        @media print {
+            @page {
+                size: landscape;
+                margin: 0;
+            }
+            body {
+                background-color: #F8FAFC !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                overflow: visible !important;
+                height: auto !important;
+            }
+            header, footer, .no-print {
+                display: none !important;
+            }
+            main {
+                display: block !important;
+                padding: 0 !important;
+                overflow: visible !important;
+            }
+            .slide {
+                display: flex !important;
+                opacity: 1 !important;
+                transform: none !important;
+                page-break-after: always !important;
+                break-after: page !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                max-width: 100% !important;
+                padding: 2.5rem 3.5rem !important;
+                box-sizing: border-box !important;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex flex-col justify-between overflow-hidden select-none bg-bomtodo-lightBg">
+
+    <!-- Header / Branding Co-Branded -->
+    <header class="w-full px-6 md:px-10 py-3.5 flex justify-between items-center bg-white border-b border-slate-200/80 shadow-xs z-10">
+        <div class="flex items-center space-x-3">
+            <div class="flex items-center">
+                <img src="image_2a73bd.png" alt="Logo Bom Todo" class="h-8 md:h-9 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/120x40/0057B8/FFFFFF?text=BOM+TODO';">
+                <div class="h-6 w-px bg-slate-200 mx-3"></div>
+                <div class="flex flex-col">
+                    <span class="text-xs font-bold tracking-wider text-bomtodo-darkblue uppercase">Clarinha IA</span>
+                    <span class="text-[9px] text-bomtodo-textMuted uppercase tracking-widest font-semibold">Inteligência Comercial & Gestão de Rotas</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="flex items-center space-x-3">
+            <button onclick="window.print()" class="no-print hidden sm:flex items-center space-x-1.5 px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-lg border border-slate-300 text-[11px] transition-all cursor-pointer shadow-2xs" title="Exportar todos os slides para PDF">
+                <i class="fa-solid fa-file-pdf text-bomtodo-red"></i>
+                <span>Exportar PDF</span>
+            </button>
+            <div class="flex items-center space-x-3 bg-slate-100/80 px-3.5 py-1.5 rounded-full border border-slate-200">
+                <span class="text-[10px] md:text-xs font-bold text-bomtodo-blue uppercase tracking-wider flex items-center">
+                    <i class="fa-solid fa-layer-group text-bomtodo-yellow mr-1.5"></i> Fase 1 + Fase 2
+                </span>
+                <div class="h-3 w-px bg-slate-300"></div>
+                <span class="text-[10px] md:text-xs font-semibold text-bomtodo-textMuted">Compilado Junho - Agosto 2026</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-grow flex items-center justify-center px-4 md:px-8 py-3 relative z-0 overflow-hidden">
+        
+        <!-- Slide 1: Capa (Compilado Fase 1 & 2) -->
+        <div class="slide active flex-col md:flex-row justify-between items-center max-w-6xl w-full gap-8" id="slide-0">
+            <div class="flex flex-col text-left max-w-2xl w-full md:w-3/5">
+                <img src="image_2a73bd.png" alt="Bom Todo" class="h-14 w-auto object-contain mb-5 self-start" onerror="this.onerror=null; this.src='https://placehold.co/180x50/0057B8/FFFFFF?text=BOM+TODO';">
+                <span class="text-xs font-extrabold tracking-widest text-bomtodo-red uppercase mb-3 bg-red-500/10 px-3.5 py-1 rounded-full border border-red-500/15 w-fit">
+                    Evolução do Ecossistema de Inteligência Comercial
+                </span>
+                <h2 class="text-3xl md:text-5xl font-black text-bomtodo-darkblue leading-tight mb-4 tracking-tight">
+                    Clarinha IA<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-bomtodo-blue to-bomtodo-darkblue">Compilado Geral de Resultados</span>
+                </h2>
+                <p class="text-xs md:text-sm text-bomtodo-textMuted max-w-lg mb-6 font-medium leading-relaxed">
+                    Comparativo da maturação do projeto: do teste piloto reativo (Fase 1 - Junho) à operação rotineira de disparos proativos, controle de positivação (Frango e GDA) e BI de carteira em campo (Fase 2 - Julho/Agosto).
+                </p>
+                <!-- Identificação de Autoria e Concepção Técnica -->
+                <div class="flex items-center space-x-2 text-[11px] text-slate-500 font-semibold mb-6 bg-slate-100/90 py-1.5 px-3.5 rounded-lg w-fit border border-slate-200/80">
+                    <i class="fa-solid fa-code text-bomtodo-blue"></i>
+                    <span>Concepção & Arquitetura Diagnóstica: <strong class="text-bomtodo-darkblue font-black">Victor Colmán</strong> • Inovall</span>
+                </div>
+                <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 items-center">
+                    <button onclick="nextSlide()" class="px-6 py-3 bg-bomtodo-blue hover:bg-bomtodo-darkblue text-white font-bold rounded-xl shadow-md shadow-bomtodo-blue/20 active:scale-95 transition-all flex items-center text-xs md:text-sm">
+                        Iniciar Apresentação <i class="fa-solid fa-circle-play ml-2"></i>
+                    </button>
+                    <span class="text-[11px] text-bomtodo-textMuted font-semibold"><i class="fa-regular fa-keyboard mr-1.5 text-bomtodo-blue"></i> Use as setas do teclado</span>
+                </div>
+            </div>
+            
+            <div class="w-full md:w-2/5 flex justify-center items-center">
+                <img src="WhatsApp Image 2026-06-09 at 12.49.49.jpeg" alt="Clarinha 3D" class="w-60 md:w-72 h-auto rounded-3xl shadow-xl border-4 border-white transform hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://placehold.co/280x280/E53935/FFFFFF?text=Clarinha+3D';">
+            </div>
+        </div>
+
+        <!-- Slide 2: Linha do Tempo da Evolução (Fase 1 vs Fase 2) -->
+        <div class="slide flex-col justify-center max-w-5xl w-full" id="slide-1">
+            <div class="text-center md:text-left mb-5">
+                <span class="text-xs font-extrabold tracking-widest text-bomtodo-red uppercase">Maturação Operacional</span>
+                <h3 class="text-2xl md:text-3xl font-black text-bomtodo-darkblue">A Transformação do Papel da Clarinha</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <!-- Card Fase 1 -->
+                <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-slate-200 text-slate-700 text-[10px] font-black uppercase px-3 py-1 rounded-bl-xl">
+                        Fase 1 (Junho)
+                    </div>
+                    <div class="w-10 h-10 bg-slate-100 rounded-xl flex items-center justify-center text-bomtodo-blue text-lg mb-3">
+                        <i class="fa-solid fa-vial"></i>
+                    </div>
+                    <h4 class="text-base font-bold text-bomtodo-darkblue mb-1">Piloto Inicial Reativo</h4>
+                    <span class="text-[11px] font-semibold text-bomtodo-red block mb-3">55 Interações • 15 Usuários Mapeados</span>
+                    <ul class="text-xs text-bomtodo-textMuted space-y-2 leading-relaxed">
+                        <li class="flex items-start"><i class="fa-solid fa-angle-right text-bomtodo-blue mt-0.5 mr-2"></i> <strong>Escopo Estrito:</strong> Resposta apenas a perguntas voluntárias sobre clientes sem compra há 60 dias.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-angle-right text-bomtodo-blue mt-0.5 mr-2"></i> <strong>Formato:</strong> Mensagens de texto longas no próprio chat, sem envio estruturado de arquivos.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-angle-right text-bomtodo-blue mt-0.5 mr-2"></i> <strong>Foco:</strong> Calibração de vocabulário, estabilidade e validação do banco de dados.</li>
+                    </ul>
+                </div>
+
+                <!-- Card Fase 2 -->
+                <div class="bg-white border-2 border-bomtodo-blue/40 rounded-2xl p-5 shadow-sm relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-bomtodo-blue text-white text-[10px] font-black uppercase px-3 py-1 rounded-bl-xl">
+                        Fase 2 (Julho & Agosto)
+                    </div>
+                    <div class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-bomtodo-blue text-lg mb-3">
+                        <i class="fa-solid fa-rocket"></i>
+                    </div>
+                    <h4 class="text-base font-bold text-bomtodo-darkblue mb-1">Operação Proativa Integrada</h4>
+                    <span class="text-[11px] font-semibold text-emerald-600 block mb-3">+35 Usuários • Disparos Recorrentes de Positivação</span>
+                    <ul class="text-xs text-bomtodo-textMuted space-y-2 leading-relaxed">
+                        <li class="flex items-start"><i class="fa-solid fa-check text-emerald-500 mt-0.5 mr-2"></i> <strong>Rotina Automatizada:</strong> Envio programado de relatórios de positivação e clientes inativos direto nas datas críticas.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-emerald-500 mt-0.5 mr-2"></i> <strong>Geração de Excel (.xlsx):</strong> Envio dinâmico de planilhas para vendedores e supervisores.</li>
+                        <li class="flex items-start"><i class="fa-solid fa-check text-emerald-500 mt-0.5 mr-2"></i> <strong>Acompanhamento de Metas:</strong> Indicadores de positivação geral, divisão de <strong>Frango</strong> e <strong>GDA</strong> por rota.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Painel de Indicadores Globais Consolidados -->
+        <div class="slide flex-col justify-center max-w-5xl w-full relative" id="slide-2">
+            <div class="absolute right-0 bottom-0 opacity-[0.05] pointer-events-none z-0">
+                <img src="WhatsApp Image 2026-06-09 at 12.49.49.jpeg" alt="Clarinha Watermark" class="w-80 h-auto rounded-full object-cover">
+            </div>
+
+            <div class="text-center md:text-left mb-5 z-10">
+                <span class="text-xs font-extrabold tracking-widest text-bomtodo-red uppercase">Visão Panorâmica</span>
+                <h3 class="text-2xl md:text-3xl font-black text-bomtodo-darkblue">Indicadores Consolidados de Engajamento</h3>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3.5 mb-5 z-10">
+                <div class="bg-white border border-slate-200 shadow-xs p-5 rounded-xl text-center">
+                    <span class="text-[10px] text-bomtodo-textMuted uppercase tracking-wider font-bold block mb-1">Usuários no Radar</span>
+                    <span class="block text-3xl font-black text-bomtodo-darkblue">38+</span>
+                    <span class="text-[10px] text-emerald-600 font-semibold mt-1 inline-block"><i class="fa-solid fa-arrow-trend-up"></i> De 15 para +38</span>
+                </div>
+                <div class="bg-white border border-slate-200 shadow-xs p-5 rounded-xl text-center">
+                    <span class="text-[10px] text-bomtodo-textMuted uppercase tracking-wider font-bold block mb-1">Rotas Acompanhadas</span>
+                    <span class="block text-3xl font-black text-bomtodo-blue">50+</span>
+                    <span class="text-[10px] text-bomtodo-textMuted font-semibold mt-1 inline-block">PB, RN e PE</span>
+                </div>
+                <div class="bg-white border border-slate-200 shadow-xs p-5 rounded-xl text-center">
+                    <span class="text-[10px] text-bomtodo-textMuted uppercase tracking-wider font-bold block mb-1">Positivação Top Rotas</span>
+                    <span class="block text-3xl font-black text-emerald-600">80% - 100%</span>
+                    <span class="text-[10px] text-emerald-600 font-semibold mt-1 inline-block">Carteiras monitoradas</span>
+                </div>
+                <div class="bg-white border border-slate-200 shadow-xs p-5 rounded-xl text-center">
+                    <span class="text-[10px] text-bomtodo-textMuted uppercase tracking-wider font-bold block mb-1">Planilhas Excel Geradas</span>
+                    <span class="block text-3xl font-black text-bomtodo-yellow">+25</span>
+                    <span class="text-[10px] text-bomtodo-textMuted font-semibold mt-1 inline-block">Downloads sob demanda</span>
+                </div>
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-xl p-4 shadow-xs z-10">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                    <div class="p-3 bg-slate-50 rounded-lg border border-slate-100">
+                        <span class="font-bold text-bomtodo-darkblue block mb-1"><i class="fa-solid fa-paper-plane text-bomtodo-blue mr-1.5"></i> Automação Proativa</span>
+                        <p class="text-bomtodo-textMuted text-[11px] leading-relaxed">Disparos de relatórios nas segundas, terças e viradas de quinzena sem exigir que o vendedor precise lembrar de consultar.</p>
+                    </div>
+                    <div class="p-3 bg-slate-50 rounded-lg border border-slate-100">
+                        <span class="font-bold text-bomtodo-darkblue block mb-1"><i class="fa-solid fa-bullseye text-bomtodo-red mr-1.5"></i> Visão Frango vs GDA</span>
+                        <p class="text-bomtodo-textMuted text-[11px] leading-relaxed">Inclusão direta dos percentuais de positivação por categoria estratégica (meta de carnes/aves e ovos GDA).</p>
+                    </div>
+                    <div class="p-3 bg-slate-50 rounded-lg border border-slate-100">
+                        <span class="font-bold text-bomtodo-darkblue block mb-1"><i class="fa-solid fa-user-tie text-amber-500 mr-1.5"></i> Engajamento da Gestão</span>
+                        <p class="text-bomtodo-textMuted text-[11px] leading-relaxed">Supervisores e gerentes (Antonimar, Anderson, Luiz Eduardo, Alexandre) utilizando a IA para auditoria rápida de área.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: A Rotina dos Disparos Proativos (O Novo Hábito Operacional) -->
+        <div class="slide flex-col justify-center max-w-5xl w-full" id="slide-3">
+            <div class="text-center md:text-left mb-4">
+                <span class="text-xs font-extrabold tracking-widest text-bomtodo-red uppercase">Automação Comercial</span>
+                <h3 class="text-2xl md:text-3xl font-black text-bomtodo-darkblue">O Ciclo de Disparos Proativos na Fase 2</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                <div class="bg-white border-t-4 border-t-bomtodo-blue border-slate-200 rounded-xl p-4 shadow-xs">
+                    <span class="text-xs font-black text-bomtodo-blue uppercase block mb-1">Dias 20 e 21</span>
+                    <h4 class="font-bold text-sm text-bomtodo-darkblue mb-2">Alerta de Inativos (60 Dias)</h4>
+                    <p class="text-[11px] text-bomtodo-textMuted leading-relaxed">
+                        Envio da lista de clientes que estão prestes a fechar o ciclo de churn ou que já ultrapassaram 60 dias sem comprar, permitindo resgate antes do fim do mês.
+                    </p>
+                </div>
+                <div class="bg-white border-t-4 border-t-bomtodo-yellow border-slate-200 rounded-xl p-4 shadow-xs">
+                    <span class="text-xs font-black text-amber-600 uppercase block mb-1">Dias 24, 25 e 27</span>
+                    <h4 class="font-bold text-sm text-bomtodo-darkblue mb-2">Termômetro de Positivação</h4>
+                    <p class="text-[11px] text-bomtodo-textMuted leading-relaxed">
+                        Relatório detalhado por vendedor com total de clientes na carteira, positivados até o momento e percentual acumulado na reta final do mês.
+                    </p>
+                </div>
+                <div class="bg-white border-t-4 border-t-emerald-500 border-slate-200 rounded-xl p-4 shadow-xs">
+                    <span class="text-xs font-black text-emerald-600 uppercase block mb-1">Dia 31 e Dia 01</span>
+                    <h4 class="font-bold text-sm text-bomtodo-darkblue mb-2">Consolidação e Fechamento</h4>
+                    <p class="text-[11px] text-bomtodo-textMuted leading-relaxed">
+                        Foto final da carteira: positivação geral da rota, corte específico de positivação de <strong>Frango</strong> e de <strong>GDA</strong> para validar o atingimento das metas.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 flex items-center justify-between text-xs">
+                <div class="flex items-center space-x-3">
+                    <div class="w-9 h-9 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center font-black">
+                        <i class="fa-solid fa-bell"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-bomtodo-darkblue block">Impacto Direto no Comportamento:</span>
+                        <span class="text-bomtodo-textMuted text-[11px]">O vendedor não precisa mais lembrar de solicitar; a Clarinha atua como copiloto proativo nas datas de cobrança.</span>
+                    </div>
+                </div>
+                <span class="px-3 py-1 bg-emerald-500/10 text-emerald-700 font-bold rounded-full text-[10px] border border-emerald-500/20">
+                    Aderência Orgânica
+                </span>
+            </div>
+        </div>
+
+        <!-- Slide 5: Performance Real de Campo na Fase 2 (Amostra de Positivação) -->
+        <div class="slide flex-col justify-center max-w-6xl w-full" id="slide-4">
+            <div class="text-center md:text-left mb-3">
+                <span class="text-xs font-extrabold tracking-widest text-bomtodo-red uppercase">Resultados de Carteira</span>
+                <h3 class="text-2xl md:text-3xl font-black text-bomtodo-darkblue">Positivação Monitorada pela Clarinha (Amostra Fase 2)</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Coluna 1: Top Positivação -->
+                <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+                    <div class="bg-bomtodo-darkblue text-white px-3 py-2 text-xs font-bold flex justify-between items-center">
+                        <span>Vendedor / Rota Mapeada</span>
+                        <span>Positivação Real</span>
+                    </div>
+                    <div class="divide-y divide-slate-100 text-xs text-slate-700">
+                        <div class="p-2.5 flex justify-between items-center hover:bg-slate-50">
+                            <div>
+                                <span class="font-bold text-bomtodo-darkblue block">Jairo Cassimiro</span>
+                                <span class="text-[10px] text-bomtodo-textMuted">PB - Canal Esp. Vale do Piancó (PB0148)</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 font-black rounded-full text-[11px]">100% (22/22)</span>
+                                <span class="text-[9px] text-bomtodo-textMuted block mt-0.5">Frango: 100% | GDA: 100%</span>
+                            </div>
+                        </div>
+                        <div class="p-2.5 flex justify-between items-center hover:bg-slate-50">
+                            <div>
+                                <span class="font-bold text-bomtodo-darkblue block">Janaina dos Santos</span>
+                                <span class="text-[10px] text-bomtodo-textMuted">PB - Canal Esp. JP/Bayeux/S. Rita (PB0111)</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 font-black rounded-full text-[11px]">95.5% (21/22)</span>
+                                <span class="text-[9px] text-bomtodo-textMuted block mt-0.5">Frango: 100% | GDA: 95.5%</span>
+                            </div>
+                        </div>
+                        <div class="p-2.5 flex justify-between items-center hover:bg-slate-50">
+                            <div>
+                                <span class="font-bold text-bomtodo-darkblue block">Francisco das Chagas</span>
+                                <span class="text-[10px] text-bomtodo-textMuted">PB - Canal Especial Sertão (PB0106)</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 font-black rounded-full text-[11px]">91.3% (21/23)</span>
+                                <span class="text-[9px] text-bomtodo-textMuted block mt-0.5">Frango: 91.3% | GDA: 91.3%</span>
+                            </div>
+                        </div>
+                        <div class="p-2.5 flex justify-between items-center hover:bg-slate-50">
+                            <div>
+                                <span class="font-bold text-bomtodo-darkblue block">Marcos Antonio Nascimento</span>
+                                <span class="text-[10px] text-bomtodo-textMuted">PB - Varejo Santa Luzia (PB0105)</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="px-2 py-0.5 bg-blue-100 text-bomtodo-blue font-black rounded-full text-[11px]">83.2% (134/161)</span>
+                                <span class="text-[9px] text-bomtodo-textMuted block mt-0.5">Frango: 84.5% | GDA: 52.8%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna 2: Varejos de Grande Volume -->
+                <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+                    <div class="bg-bomtodo-darkblue text-white px-3 py-2 text-xs font-bold flex justify-between items-center">
+                        <span>Rotas de Varejo de Alta Volumetria</span>
+                        <span>Positivação Real</span>
+                    </div>
+                    <div class="divide-y divide-slate-100 text-xs text-slate-700">
+                        <div class="p-2.5 flex justify-between items-center hover:bg-slate-50">
+                            <div>
+                                <span class="font-bold text-bomtodo-darkblue block">Kaio Vieira</span>
+                                <span class="text-[10px] text-bomtodo-textMuted">PB - Varejo Pombal (PB0110)</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="px-2 py-0.5 bg-blue-100 text-bomtodo-blue font-black rounded-full text-[11px]">82.6% (176/213)</span>
+                                <span class="text-[9px] text-bomtodo-textMuted block mt-0.5">Frango: 80.8% | GDA: 44.6%</span>
+                            </div>
+                        </div>
+                        <div class="p-2.5 flex justify-between items-center hover:bg-slate-50">
+                            <div>
+                                <span class="font-bold text-bomtodo-darkblue block">Patricia Pereira</span>
+                                <span class="text-[10px] text-bomtodo-textMuted">PB - Varejo Itaporanga (PB0108)</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="px-2 py-0.5 bg-blue-100 text-bomtodo-blue font-black rounded-full text-[11px]">77.7% (174/224)</span>
+                                <span class="text-[9px] text-bomtodo-textMuted block mt-0.5">Frango: 80.8% | GDA: 43.3%</span>
+                            </div>
+                        </div>
+                        <div class="p-2.5 flex justify-between items-center hover:bg-slate-50">
+                            <div>
+                                <span class="font-bold text-bomtodo-darkblue block">Pauleanna</span>
+                                <span class="text-[10px] text-bomtodo-textMuted">RN - Varejo Currais Novos (RN0125)</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="px-2 py-0.5 bg-blue-100 text-bomtodo-blue font-black rounded-full text-[11px]">78.9% (120/152)</span>
+                                <span class="text-[9px] text-bomtodo-textMuted block mt-0.5">Frango: 77.6% | GDA: 56.6%</span>
+                            </div>
+                        </div>
+                        <div class="p-2.5 flex justify-between items-center hover:bg-slate-50">
+                            <div>
+                                <span class="font-bold text-bomtodo-darkblue block">Luzenilson Melo</span>
+                                <span class="text-[10px] text-bomtodo-textMuted">PB - Varejo Cajazeiras (PB0107)</span>
+                            </div>
+                            <div class="text-right">
+                                <span class="px-2 py-0.5 bg-blue-100 text-bomtodo-blue font-black rounded-full text-[11px]">72.8% (131/180)</span>
+                                <span class="text-[9px] text-bomtodo-textMuted block mt-0.5">Frango: 73.9% | GDA: 32.2%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Como Mudou o Perfil das Dúvidas (Fase 1 vs Fase 2) -->
+        <div class="slide flex-col justify-center max-w-5xl w-full" id="slide-5">
+            <div class="text-center md:text-left mb-4">
+                <span class="text-xs font-extrabold tracking-widest text-bomtodo-red uppercase">Inteligência de Uso</span>
+                <h3 class="text-2xl md:text-3xl font-black text-bomtodo-darkblue">A Mudança na Demanda dos Usuários</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-center">
+                <div class="space-y-3.5">
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <span class="text-bomtodo-darkblue">Positivação de Frango vs GDA (Novo)</span>
+                            <span class="text-bomtodo-red font-bold">38.5%</span>
+                        </div>
+                        <div class="w-full bg-slate-200 rounded-full h-2">
+                            <div class="bg-bomtodo-red h-2 rounded-full" style="width: 38.5%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <span class="text-bomtodo-darkblue">Clientes Inativos (60 dias / Churn)</span>
+                            <span class="text-bomtodo-blue font-bold">31.0%</span>
+                        </div>
+                        <div class="w-full bg-slate-200 rounded-full h-2">
+                            <div class="bg-bomtodo-blue h-2 rounded-full" style="width: 31%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <span class="text-bomtodo-darkblue">Filtros de Faturamento (> R$ 2k/5k e Top 10)</span>
+                            <span class="text-amber-500 font-bold">14.5%</span>
+                        </div>
+                        <div class="w-full bg-slate-200 rounded-full h-2">
+                            <div class="bg-amber-500 h-2 rounded-full" style="width: 14.5%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <span class="text-bomtodo-darkblue">Mix e Gaps Específicos (Batata, Macaxeira, Massas)</span>
+                            <span class="text-slate-600 font-bold">10.0%</span>
+                        </div>
+                        <div class="w-full bg-slate-200 rounded-full h-2">
+                            <div class="bg-slate-600 h-2 rounded-full" style="width: 10%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <span class="text-bomtodo-darkblue">Auditoria e Cadastros (Rotas e CNPJ)</span>
+                            <span class="text-slate-400 font-bold">6.0%</span>
+                        </div>
+                        <div class="w-full bg-slate-200 rounded-full h-2">
+                            <div class="bg-slate-400 h-2 rounded-full" style="width: 6%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-slate-200 p-5 rounded-xl shadow-xs space-y-3 text-xs">
+                    <h4 class="font-bold text-sm text-bomtodo-darkblue flex items-center">
+                        <i class="fa-solid fa-brain text-bomtodo-blue mr-2"></i> Diagnóstico de Amadurecimento
+                    </h4>
+                    <p class="text-bomtodo-textMuted leading-relaxed">
+                        Na <strong>Fase 1</strong>, mais de 56% das perguntas eram apenas <em>"quem não comprou há 60 dias?"</em>.
+                    </p>
+                    <p class="text-bomtodo-textMuted leading-relaxed">
+                        Na <strong>Fase 2</strong>, os usuários passaram a exigir da Clarinha:
+                    </p>
+                    <ul class="text-[11px] text-bomtodo-darkblue font-semibold space-y-1.5 pl-2 border-l-2 border-bomtodo-yellow">
+                        <li>• "Quantos clientes faltam para eu positivar Frango e GDA?"</li>
+                        <li>• "Quais clientes da rota compraram frango mas não compraram batata?"</li>
+                        <li>• "Me passe os 10 maiores clientes da minha rota em planilha Excel."</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Casos Práticos Fase 2 - Parte 1: Gestão de Carteira & BI Comercial -->
+        <div class="slide flex-col justify-center max-w-6xl w-full" id="slide-6">
+            <div class="text-center md:text-left mb-2.5">
+                <span class="text-xs font-extrabold tracking-widest text-bomtodo-red uppercase">Raio-X de Logs Reais (Parte 1 de 4)</span>
+                <h3 class="text-xl md:text-2xl font-black text-bomtodo-darkblue">Casos Práticos Fase 2: Gestão de Carteira & BI Avançado</h3>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+                <table class="w-full text-left text-[10.5px] border-collapse">
+                    <thead class="bg-bomtodo-darkblue text-white font-bold uppercase text-[9px] tracking-wider border-b border-slate-200">
+                        <tr>
+                            <th class="p-2 w-2/12">Usuário / Rota</th>
+                            <th class="p-2 w-4/12">Entrada (Pergunta do Usuário)</th>
+                            <th class="p-2 w-4/12">Ação Executada pela IA</th>
+                            <th class="p-2 w-2/12">Classificação Diagnóstica</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-700">
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Antonimar (Gerente)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Quais clientes com faturamento acima de R$ 2.000 não compraram ainda esse mês?"</td>
+                            <td class="p-2">Filtrou histórico de faturamento por peso e listou mais de 50 clientes com nomes de vendedores.</td>
+                            <td class="p-2 text-emerald-600 font-bold"><i class="fa-solid fa-circle-check mr-1"></i> Sucesso (BI Avançado)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Antonimar (Gerente)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Quais clientes NÃO compraram nenhum tipo de batata em Agosto em Cajazeiras?"</td>
+                            <td class="p-2">Cruzou base da rota PB0107 e filtrou dezenas de clientes sem compra do SKU batata no mês.</td>
+                            <td class="p-2 text-emerald-600 font-bold"><i class="fa-solid fa-circle-check mr-1"></i> Sucesso (Gaps de Mix)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Antonimar (Gerente)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Quais clientes de até 5 checkouts compraram só 1 produto de MASSAS?"</td>
+                            <td class="p-2">Informou que o dado de 'checkouts' não consta na base, mas listou clientes com 1 SKU de massas.</td>
+                            <td class="p-2 text-blue-600 font-bold"><i class="fa-solid fa-circle-info mr-1"></i> Sucesso com Contorno de UX</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Alex Pacheco (Solânea)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Qual o produto mais consumido pelos clientes da rota Solânea?"</td>
+                            <td class="p-2">Identificou item 62120001 (Filé de Peito BD 1KG) com R$ 65.988 em faturamento acumulado.</td>
+                            <td class="p-2 text-emerald-600 font-bold"><i class="fa-solid fa-circle-check mr-1"></i> Sucesso (Mix & Volume)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Alex Pacheco (Solânea)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Quantos clientes foram positivados na rota Solânea em agosto?"</td>
+                            <td class="p-2">Painel de fechamento: 126 positivados (73,6%), Frango (73,1%) e GDA (30,4%).</td>
+                            <td class="p-2 text-emerald-600 font-bold"><i class="fa-solid fa-circle-check mr-1"></i> Sucesso (Fechamento)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Pauleanna (Currais Novos)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Me manda os 10 melhores clientes da rota que não compraram esse mês"</td>
+                            <td class="p-2">Listou top 10 clientes com valores de R$ 7.941 a R$ 868 com códigos e cidades.</td>
+                            <td class="p-2 text-emerald-600 font-bold"><i class="fa-solid fa-circle-check mr-1"></i> Resgate Comercial Top 10</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Pauleanna (Currais Novos)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Relatório de positivados mês Agosto 2026"</td>
+                            <td class="p-2">Retornou Carteira 152: Positivação Geral 78.9%, Frango 77.6% e GDA 56.5%.</td>
+                            <td class="p-2 text-emerald-600 font-bold"><i class="fa-solid fa-circle-check mr-1"></i> Sucesso Multicategoria</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Jose Adaelson (Alto Oeste)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Gostaria de saber quantos clientes ainda falta para mim positivar em GDA"</td>
+                            <td class="p-2">Identificou exatamente 5 clientes pendentes em GDA e listou nomes, CNPJ e datas.</td>
+                            <td class="p-2 text-emerald-600 font-bold"><i class="fa-solid fa-circle-check mr-1"></i> Sucesso (Controle de GDA)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide 8: Casos Práticos Fase 2 - Parte 2: Geração de Excel, Curva ABC & Positivação -->
+        <div class="slide flex-col justify-center max-w-6xl w-full" id="slide-7">
+            <div class="text-center md:text-left mb-2.5">
+                <span class="text-xs font-extrabold tracking-widest text-bomtodo-red uppercase">Raio-X de Logs Reais (Parte 2 de 4)</span>
+                <h3 class="text-xl md:text-2xl font-black text-bomtodo-darkblue">Casos Práticos Fase 2: Geração de Excel & Curva ABC</h3>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+                <table class="w-full text-left text-[10.5px] border-collapse">
+                    <thead class="bg-bomtodo-darkblue text-white font-bold uppercase text-[9px] tracking-wider border-b border-slate-200">
+                        <tr>
+                            <th class="p-2 w-2/12">Usuário / Rota</th>
+                            <th class="p-2 w-4/12">Entrada (Pergunta do Usuário)</th>
+                            <th class="p-2 w-4/12">Ação Executada pela IA</th>
+                            <th class="p-2 w-2/12">Classificação Diagnóstica</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-700">
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Jemerson (Gerente)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Clarinha, me envia os clientes que compraram e não compraram macaxeira"</td>
+                            <td class="p-2">Gerou e enviou 2 planilhas Excel (.xlsx) completas direto no WhatsApp do gerente.</td>
+                            <td class="p-2 text-emerald-600 font-bold"><i class="fa-solid fa-file-excel mr-1"></i> Sucesso (Geração de Excel)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Belarmino (Campina Grande)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Poderia passar a lista de clientes sem compras... Favor passar em excel"</td>
+                            <td class="p-2">Gerou instantaneamente a planilha Excel com 20 clientes inativos e despachou no chat.</td>
+                            <td class="p-2 text-emerald-600 font-bold"><i class="fa-solid fa-file-excel mr-1"></i> Sucesso (Planilha sob Demanda)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Alexandre (Boa Vista)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Preciso que você me passe meu top 10 clientes"</td>
+                            <td class="p-2">Extraiu e ordenou ranking de faturamento de R$ 25.207 a R$ 317 por cliente na rota.</td>
+                            <td class="p-2 text-emerald-600 font-bold"><i class="fa-solid fa-circle-check mr-1"></i> Sucesso (Curva ABC da Rota)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Glauber (Campina Grande)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Quais clientes que preciso crescer meu faturamento e quais os produtos?"</td>
+                            <td class="p-2">Cruzou clientes com produtos inativos (R$ 160k potencial) e indicou Filé BD 1kg e Linguiça Frango.</td>
+                            <td class="p-2 text-emerald-600 font-bold"><i class="fa-solid fa-arrow-trend-up mr-1"></i> Sucesso (Cross-Sell / Oportunidade)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Anna Priscila (Caicó)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Quais clientes faltam para positivar abatidos em julho?"</td>
+                            <td class="p-2">Identificou e listou mais de 70 clientes inativos na categoria de aves, carnes e abatidos.</td>
+                            <td class="p-2 text-emerald-600 font-bold"><i class="fa-solid fa-circle-check mr-1"></i> Sucesso (Positivação Categorias)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Marcos Pimenta (Apodi)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Quantos clientes falta para positivar em Felipe Guerra, Apodi e Caraúbas?"</td>
+                            <td class="p-2">Varreu cada município: 0 em Felipe Guerra, 2 em Apodi e 0 em Caraúbas.</td>
+                            <td class="p-2 text-emerald-600 font-bold"><i class="fa-solid fa-circle-check mr-1"></i> Sucesso (Filtro Geográfico)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Luiz Eduardo (Gerente)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Você consegue me informar quais clientes não foram positivados na rota Boa Vista?"</td>
+                            <td class="p-2">Listou 8 clientes inativos com códigos, razões sociais e nome do vendedor Alexandre Souza.</td>
+                            <td class="p-2 text-emerald-600 font-bold"><i class="fa-solid fa-circle-check mr-1"></i> Sucesso (Auditoria Regional)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Jairo Cassimiro & Janaina</td>
+                            <td class="p-2 font-semibold text-slate-900">Acompanhamento proativo de positivação nos dias 21, 24, 27 e 31.</td>
+                            <td class="p-2">IA consolidou 100% de positivação para Jairo (22/22) e 95.5% para Janaina (21/22) em Frango e GDA.</td>
+                            <td class="p-2 text-emerald-600 font-bold"><i class="fa-solid fa-trophy mr-1"></i> Sucesso Máximo de Fechamento</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide 9: Casos Práticos Fase 2 - Parte 3: Dicionário de Dados & Latência ERP -->
+        <div class="slide flex-col justify-center max-w-6xl w-full" id="slide-8">
+            <div class="text-center md:text-left mb-2.5">
+                <span class="text-xs font-extrabold tracking-widest text-bomtodo-red uppercase">Raio-X de Logs Reais (Parte 3 de 4)</span>
+                <h3 class="text-xl md:text-2xl font-black text-bomtodo-darkblue">Casos Práticos Fase 2: Dicionário Semântico & Latência de ERP</h3>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+                <table class="w-full text-left text-[10.5px] border-collapse">
+                    <thead class="bg-bomtodo-darkblue text-white font-bold uppercase text-[9px] tracking-wider border-b border-slate-200">
+                        <tr>
+                            <th class="p-2 w-2/12">Usuário / Rota</th>
+                            <th class="p-2 w-4/12">Entrada (Pergunta do Usuário)</th>
+                            <th class="p-2 w-4/12">Ação Executada pela IA</th>
+                            <th class="p-2 w-2/12">Classificação Diagnóstica</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-700">
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Daiane (Vendedora)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Mande a positivação de GDA"</td>
+                            <td class="p-2">Confundiu a sigla GDA com o município de Governador Dix-Sept Rosado e trouxe clientes daquela cidade.</td>
+                            <td class="p-2 text-bomtodo-red font-bold"><i class="fa-solid fa-triangle-exclamation mr-1"></i> Ambiguidade Semântica (GDA)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Irenaldo (Itabaiana)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Preciso saber quantos clientes faltam de positivação de Gda?"</td>
+                            <td class="p-2">IA associou 'GDA' a 'Galinha de Postura e Galo' e exigiu códigos específicos dos itens.</td>
+                            <td class="p-2 text-bomtodo-red font-bold"><i class="fa-solid fa-spell-check mr-1"></i> Falha de Dicionário Semântico</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Jemerson (Gerente)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Me envia os clientes não positivados com GDA no Canal Campina Grande"</td>
+                            <td class="p-2">IA buscou a palavra-chave 'GDA' na coluna de 'Risco' do banco e não retornou dados.</td>
+                            <td class="p-2 text-bomtodo-red font-bold"><i class="fa-solid fa-database mr-1"></i> Coluna Trocada no Banco (TI)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Irenaldo (Itabaiana)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Me dê um resumo de minha venda de Gda de hoje por favor?"</td>
+                            <td class="p-2">IA informou limitação técnica: base opera consolidada e não possui faturamento D+0 em tempo real.</td>
+                            <td class="p-2 text-amber-600 font-bold"><i class="fa-solid fa-clock mr-1"></i> Latência D+0 (Tempo Real ERP)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Hiago (Vendedor)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Essa loja tem um pedido chegando hoje, como está sem venda?"</td>
+                            <td class="p-2">IA opera com base D-1; não enxergou o pedido que estava ainda em trânsito no caminhão.</td>
+                            <td class="p-2 text-amber-600 font-bold"><i class="fa-solid fa-truck-fast mr-1"></i> Pedido em Trânsito (Sincronia)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Luiz Eduardo (Gerente)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Preciso saber quantos kg foram vendidos na categoria de suíno?"</td>
+                            <td class="p-2">IA esclareceu que o banco armazena faturamento em R$ (campo Peso) e não a pesagem em quilos.</td>
+                            <td class="p-2 text-amber-600 font-bold"><i class="fa-solid fa-scale-balanced mr-1"></i> Dicionário de Dados (R$ vs Kg)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Anderson (Gerente)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Quantos clientes não positivados na rota de Surubim nos últimos 30 dias?"</td>
+                            <td class="p-2">IA avisou que ferramenta só opera com corte de 60 dias (churn fixo).</td>
+                            <td class="p-2 text-amber-600 font-bold"><i class="fa-solid fa-filter mr-1"></i> Limitação de Escopo (Corte 30d)</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Anderson (Gerente)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Quem são os clientes não positivados em GDA em Surubim/Santa Cruz?"</td>
+                            <td class="p-2">Listou 7 clientes inativos em GDA vinculados ao vendedor David Ricardo.</td>
+                            <td class="p-2 text-emerald-600 font-bold"><i class="fa-solid fa-circle-check mr-1"></i> Sucesso (Auditoria Regional)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide 10: Casos Práticos Fase 2 - Parte 4: Roteirização, Transcrição & Demandas de Campo -->
+        <div class="slide flex-col justify-center max-w-6xl w-full" id="slide-9">
+            <div class="text-center md:text-left mb-2.5">
+                <span class="text-xs font-extrabold tracking-widest text-bomtodo-red uppercase">Raio-X de Logs Reais (Parte 4 de 4)</span>
+                <h3 class="text-xl md:text-2xl font-black text-bomtodo-darkblue">Casos Práticos Fase 2: Roteirização, Transcrição & Demandas de Campo</h3>
+            </div>
+            <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-xs">
+                <table class="w-full text-left text-[10.5px] border-collapse">
+                    <thead class="bg-bomtodo-darkblue text-white font-bold uppercase text-[9px] tracking-wider border-b border-slate-200">
+                        <tr>
+                            <th class="p-2 w-2/12">Usuário / Rota</th>
+                            <th class="p-2 w-4/12">Entrada (Pergunta do Usuário)</th>
+                            <th class="p-2 w-4/12">Ação Executada pela IA</th>
+                            <th class="p-2 w-2/12">Classificação Diagnóstica</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100 text-slate-700">
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Braulio (Varejo RN)</td>
+                            <td class="p-2 font-semibold text-slate-900">Enviou áudio no WhatsApp com dúvidas sobre clientes da rota.</td>
+                            <td class="p-2">Robô não possui módulo de transcrição e deixou a solicitação sem resposta.</td>
+                            <td class="p-2 text-bomtodo-red font-bold"><i class="fa-solid fa-microphone-slash mr-1"></i> Falta Suporte a Áudio / Whisper</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Francisco Chagas (Sertão)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Esses clientes não estão ativos e nem são mais meus"</td>
+                            <td class="p-2">Clientes transferidos continuavam atrelados à rota PB0106 na base do ERP da Guaraves.</td>
+                            <td class="p-2 text-amber-600 font-bold"><i class="fa-solid fa-arrows-split-up-and-left mr-1"></i> Saneamento de Roteirização TI</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Robson (Limoeiro/PE)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Aqui na minha carteira tem 153 clientes só" (relatório apontou 279) e IA chamou de William.</td>
+                            <td class="p-2">Identificou divergência no cadastro de telefone do vendedor e discrepância de carteira.</td>
+                            <td class="p-2 text-bomtodo-red font-bold"><i class="fa-solid fa-user-xmark mr-1"></i> Divergência Cadastral / Login</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Alexandro Santos (Vendedor)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Como está o KPI de mix de produtos da rota QRZ/BD/SBC/CF?"</td>
+                            <td class="p-2">IA tratou o usuário como 'Luana' e barrou a rota por regras de permissão de outro vendedor.</td>
+                            <td class="p-2 text-bomtodo-red font-bold"><i class="fa-solid fa-shield-halved mr-1"></i> Erro de Identidade / Permissão</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Carlos (Canal Brejo)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Onde fica localizado o supermercado 03 irmãos?"</td>
+                            <td class="p-2">IA esclareceu que possui apenas dados de vendas e não disponibiliza endereçamento / GPS.</td>
+                            <td class="p-2 text-slate-500 font-bold"><i class="fa-solid fa-location-dot mr-1"></i> Sem Módulo de Endereço/GPS</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Bruno (Key Account)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Esse cliente trata-se de um CD. Fazemos negociações pontuais com ele."</td>
+                            <td class="p-2">Vendedor orientou sobre perfil atípico de cliente que não deve entrar na régua padrão de 60 dias.</td>
+                            <td class="p-2 text-blue-600 font-bold"><i class="fa-solid fa-tags mr-1"></i> Calibração de Regras por Segmento</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Marcos Nascimento (Santa Luzia)</td>
+                            <td class="p-2 font-semibold text-slate-900">"Comprou ontem foi positivado... Os outros pode passar para o telemarketing"</td>
+                            <td class="p-2">IA celebrou a positivação, mas não possui fluxo de automação para transferir carteira ao televendas.</td>
+                            <td class="p-2 text-blue-600 font-bold"><i class="fa-solid fa-arrows-to-dot mr-1"></i> Demanda de Integração CRM</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50">
+                            <td class="p-2 font-bold text-bomtodo-darkblue">Alexandre (Gerente Distrib.)</td>
+                            <td class="p-2 font-semibold text-slate-900">"No relatório que acabou de enviar não estão listadas todas as áreas de venda."</td>
+                            <td class="p-2">IA listou as 10 áreas de venda oficiais cadastradas (GRV, GNV, PB, RN, PE, Key Account, etc.).</td>
+                            <td class="p-2 text-emerald-600 font-bold"><i class="fa-solid fa-sitemap mr-1"></i> Sucesso (Auditoria Estrutural)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Slide 11: Gargalos Críticos da Fase 2 & Soluções Imediatas -->
+        <div class="slide flex-col justify-center max-w-5xl w-full" id="slide-10">
+            <div class="text-center md:text-left mb-4">
+                <span class="text-xs font-extrabold tracking-widest text-bomtodo-red uppercase">Plano de Evolução Técnica</span>
+                <h3 class="text-2xl md:text-3xl font-black text-bomtodo-darkblue">Gargalos Críticos Detectados na Fase 2</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="bg-white border-t-4 border-t-bomtodo-red border-slate-200 rounded-xl p-4 shadow-xs">
+                    <div class="w-8 h-8 bg-red-50 text-bomtodo-red rounded-lg flex items-center justify-center text-sm mb-3">
+                        <i class="fa-solid fa-spell-check"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-bomtodo-darkblue mb-1">Dicionário de Negócio: "GDA"</h4>
+                    <p class="text-[11px] text-bomtodo-textMuted leading-relaxed">
+                        A sigla GDA foi interpretada ora como cidade (Gov. Dix-Sept), ora procurada na coluna 'Risco', ora como galo/postura. <strong>Solução:</strong> Mapear sinônimos fixos no prompt para a linha de ovos Bom Todo.
+                    </p>
+                </div>
+                <div class="bg-white border-t-4 border-t-bomtodo-red border-slate-200 rounded-xl p-4 shadow-xs">
+                    <div class="w-8 h-8 bg-red-50 text-bomtodo-red rounded-lg flex items-center justify-center text-sm mb-3">
+                        <i class="fa-solid fa-rotate"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-bomtodo-darkblue mb-1">Sincronização D+0 vs D-1</h4>
+                    <p class="text-[11px] text-bomtodo-textMuted leading-relaxed">
+                        Vendedores relataram: <em>"comprou ontem"</em> ou <em>"pedido chegando hoje"</em>. <strong>Solução:</strong> Adicionar aviso explícito na mensagem: <em>"Dados atualizados até as 23h de ontem"</em> para evitar ruído.
+                    </p>
+                </div>
+                <div class="bg-white border-t-4 border-t-bomtodo-red border-slate-200 rounded-xl p-4 shadow-xs">
+                    <div class="w-8 h-8 bg-red-50 text-bomtodo-red rounded-lg flex items-center justify-center text-sm mb-3">
+                        <i class="fa-solid fa-microphone"></i>
+                    </div>
+                    <h4 class="font-bold text-sm text-bomtodo-darkblue mb-1">Transcrição de Áudio</h4>
+                    <p class="text-[11px] text-bomtodo-textMuted leading-relaxed">
+                        Em campo e na estrada, vários vendedores enviam áudios rápidos. <strong>Solução:</strong> Integrar modelo Whisper/IA de voz para transcrever automaticamente áudios do WhatsApp e responder em texto.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Os 5 Módulos de Valor Comercial Consolidado -->
+        <div class="slide flex-col justify-center max-w-5xl w-full" id="slide-11">
+            <div class="text-center md:text-left mb-4">
+                <span class="text-xs font-extrabold tracking-widest text-bomtodo-red uppercase">Roadmap Estratégico</span>
+                <h3 class="text-2xl md:text-3xl font-black text-bomtodo-darkblue">Os 5 Módulos Consolidados pelas Duas Fases</h3>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
+                <div class="bg-white border border-slate-200 p-3.5 rounded-xl shadow-xs text-left">
+                    <div class="text-bomtodo-blue text-base mb-2"><i class="fa-solid fa-cubes"></i></div>
+                    <h4 class="font-bold text-xs text-bomtodo-darkblue mb-1">1. Mix Cruzado</h4>
+                    <p class="text-[10px] text-bomtodo-textMuted leading-relaxed">Cruzamento de carteira: clientes que compram Frango mas nunca compraram GDA, batata ou massas.</p>
+                </div>
+                <div class="bg-white border border-slate-200 p-3.5 rounded-xl shadow-xs text-left">
+                    <div class="text-bomtodo-blue text-base mb-2"><i class="fa-solid fa-chart-pie"></i></div>
+                    <h4 class="font-bold text-xs text-bomtodo-darkblue mb-1">2. Termômetro Metas</h4>
+                    <p class="text-[10px] text-bomtodo-textMuted leading-relaxed">Disparos de positivação por rota nos dias 20, 24, 27 e 31, estimulando o fechamento do mês.</p>
+                </div>
+                <div class="bg-white border border-slate-200 p-3.5 rounded-xl shadow-xs text-left">
+                    <div class="text-bomtodo-blue text-base mb-2"><i class="fa-solid fa-file-excel"></i></div>
+                    <h4 class="font-bold text-xs text-bomtodo-darkblue mb-1">3. Exportador Excel</h4>
+                    <p class="text-[10px] text-bomtodo-textMuted leading-relaxed">Geração automática de relatórios .xlsx direto no WhatsApp para gerentes e supervisores de área.</p>
+                </div>
+                <div class="bg-white border border-slate-200 p-3.5 rounded-xl shadow-xs text-left">
+                    <div class="text-bomtodo-blue text-base mb-2"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                    <h4 class="font-bold text-xs text-bomtodo-darkblue mb-1">4. Pré-Churn 30d</h4>
+                    <p class="text-[10px] text-bomtodo-textMuted leading-relaxed">Alertar o vendedor no dia 30 sem compra, recuperando o cliente antes de virar inativo de 60 dias.</p>
+                </div>
+                <div class="bg-white border border-slate-200 p-3.5 rounded-xl shadow-xs text-left">
+                    <div class="text-bomtodo-blue text-base mb-2"><i class="fa-solid fa-headset"></i></div>
+                    <h4 class="font-bold text-xs text-bomtodo-darkblue mb-1">5. Voz & WhatsApp</h4>
+                    <p class="text-[10px] text-bomtodo-textMuted leading-relaxed">Suporte nativo a comandos de voz para que o vendedor consulte sua rota dirigindo com total praticidade.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 13: Conclusão e Próximos Passos -->
+        <div class="slide flex-col justify-center items-center text-center max-w-4xl w-full" id="slide-12">
+            <div class="mb-3">
+                <img src="WhatsApp Image 2026-06-09 at 12.49.49.jpeg" alt="Clarinha Final" class="w-28 h-28 md:w-32 md:h-32 rounded-full object-cover shadow-lg border-4 border-bomtodo-blue transform hover:scale-105 transition-transform">
+            </div>
+            
+            <h3 class="text-2xl md:text-3xl font-black text-bomtodo-darkblue mb-2 tracking-tight">
+                A Clarinha já faz parte da rotina comercial da Bom Todo
+            </h3>
+            <p class="text-xs md:text-sm font-semibold text-bomtodo-red uppercase tracking-widest mb-4">
+                Próximo Passo: Integração Oficial Total & Expansão para 100% da Força de Vendas
+            </p>
+            
+            <p class="text-xs md:text-sm text-bomtodo-textMuted max-w-xl mx-auto mb-6 leading-relaxed font-medium">
+                Os dados das duas fases comprovam: a equipe abraçou a ferramenta, os relatórios proativos geraram ação prática e o volume de positivação se manteve em patamares elevados. Ajustando o vocabulário de mix e o suporte a áudios, a Clarinha se torna a ferramenta comercial definitiva da empresa.
+            </p>
+            
+            <div class="bg-white border border-slate-200 rounded-xl px-5 py-3 shadow-xs max-w-md mx-auto flex items-center justify-between text-left w-full">
+                <div class="flex items-center space-x-3">
+                    <div class="text-orange-500 text-xl">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-black text-orange-500 text-base tracking-tight">Inovall</h4>
+                        <p class="text-[9px] text-bomtodo-textMuted font-semibold uppercase tracking-wider">Tecnologia que aproxima.</p>
+                        <span class="text-[10px] text-slate-500 font-medium block mt-0.5">Concepção & Execução Técnica: <strong class="text-slate-700 font-bold">Victor Colmán</strong></span>
+                    </div>
+                </div>
+                <img src="image_2a73bd.png" alt="Bom Todo Logo Final" class="h-8 w-auto object-contain" onerror="this.onerror=null; this.src='https://placehold.co/110x35/0057B8/FFFFFF?text=BOM+TODO';">
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer Controls -->
+    <footer class="w-full px-6 md:px-10 py-3.5 flex flex-col sm:flex-row justify-between items-center bg-white border-t border-slate-200/80 shadow-sm z-10 space-y-3 sm:space-y-0">
+        <div class="flex items-center space-x-2">
+            <span id="slide-num" class="text-xs font-black text-bomtodo-darkblue">01</span>
+            <span class="text-xs text-slate-300">/</span>
+            <span class="text-xs text-bomtodo-textMuted font-bold">13</span>
+            <div class="h-3 w-px bg-slate-300 mx-2 hidden sm:block"></div>
+            <span class="text-[10px] text-slate-400 font-medium hidden sm:inline-block">Desenvolvido por <strong class="text-slate-600 font-bold">Victor Colmán</strong> • Inovall</span>
+        </div>
+        
+        <div class="hidden sm:block w-72 md:w-96 bg-slate-100 rounded-full h-1.5 overflow-hidden border border-slate-200">
+            <div id="progress" class="bg-bomtodo-blue h-1.5 rounded-full transition-all duration-300" style="width: 7.69%"></div>
+        </div>
+        
+        <div class="flex space-x-2.5">
+            <button onclick="prevSlide()" class="p-2 bg-slate-50 hover:bg-slate-100 active:scale-95 text-bomtodo-darkblue rounded-lg border border-slate-200 shadow-xs transition-all text-xs">
+                <i class="fa-solid fa-arrow-left px-1"></i>
+            </button>
+            <button onclick="nextSlide()" class="px-4 py-2 bg-bomtodo-blue hover:bg-bomtodo-darkblue active:scale-95 text-white font-bold rounded-lg shadow-xs transition-all flex items-center text-xs">
+                Avançar <i class="fa-solid fa-arrow-right ml-1.5"></i>
+            </button>
+        </div>
+    </footer>
+
+    <!-- Slide Navigation Logic -->
+    <script>
+        let currentSlide = 0;
+        const totalSlides = 13;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+            });
+
+            const activeSlide = document.getElementById(`slide-${index}`);
+            if (activeSlide) {
+                activeSlide.classList.add('active');
+            }
+
+            document.getElementById('slide-num').innerText = String(index + 1).padStart(2, '0');
+            const progressPercent = ((index + 1) / totalSlides) * 100;
+            document.getElementById('progress').style.width = `${progressPercent}%`;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight') {
+                nextSlide();
+            } else if (event.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        // Touch swipe support
+        let touchstartX = 0;
+        let touchendX = 0;
+        
+        document.body.addEventListener('touchstart', function(event) {
+            touchstartX = event.changedTouches[0].screenX;
+        }, false);
+        
+        document.body.addEventListener('touchend', function(event) {
+            touchendX = event.changedTouches[0].screenX;
+            if (touchendX < touchstartX - 50) nextSlide();
+            if (touchendX > touchstartX + 50) prevSlide();
+        }, false);
+    </script>
+</body>
+</html>
