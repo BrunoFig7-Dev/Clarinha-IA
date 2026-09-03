@@ -1,0 +1,526 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-container-high":"#e9e8e8","on-surface-variant":"#584236","on-primary-fixed":"#321200","primary":"#994700","on-secondary-fixed":"#001d35","surface-container-low":"#f4f3f3","primary-fixed":"#ffdbc8","surface-dim":"#dadada","surface-variant":"#e3e2e2","primary-container":"#f17300","surface":"#faf9f9","on-primary-fixed-variant":"#753400","on-error-container":"#93000a","surface-tint":"#994700","tertiary-container":"#6b96e9","secondary":"#0062a0","on-tertiary":"#ffffff","inverse-primary":"#ffb68b","primary-fixed-dim":"#ffb68b","surface-container-lowest":"#ffffff","secondary-fixed":"#d0e4ff","background":"#faf9f9","on-secondary":"#ffffff","secondary-container":"#5fb0fd","on-primary":"#ffffff","tertiary-fixed":"#d8e2ff","on-tertiary-fixed-variant":"#034493","on-primary-container":"#512200","surface-bright":"#faf9f9","inverse-on-surface":"#f1f0f0","on-secondary-fixed-variant":"#00497a","error-container":"#ffdad6","surface-container":"#eeeeed","on-surface":"#1a1c1c","on-secondary-container":"#00426e","outline":"#8b7264","on-tertiary-container":"#002d67","on-error":"#ffffff","tertiary-fixed-dim":"#adc6ff","inverse-surface":"#2f3131","on-tertiary-fixed":"#001a41","on-background":"#1a1c1c","secondary-fixed-dim":"#9bcaff","outline-variant":"#dfc0b0","surface-container-highest":"#e3e2e2","tertiary":"#2c5cac","error":"#ba1a1a"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-xs":"0.5rem","space-2xl":"3rem","gutter":"1.5rem","container-padding-mobile":"1rem","container-padding-desktop":"2.5rem","space-2xs":"0.25rem","space-3xl":"4.5rem","space-sm":"0.75rem","space-xl":"2rem","space-lg":"1.5rem","space-md":"1rem"},"fontFamily":{"headline-lg":["Space Grotesk"],"display-lg":["Space Grotesk"],"body-md":["Manrope"],"display-sm":["Space Grotesk"],"label-sm":["Space Grotesk"],"label-md":["Space Grotesk"],"body-sm":["Manrope"],"headline-sm":["Space Grotesk"],"body-lg":["Manrope"]},"fontSize":{"headline-lg":["1.75rem",{"lineHeight":"1.3","letterSpacing":"-0.015em","fontWeight":"600"}],"display-lg":["3.5rem",{"lineHeight":"1.1","letterSpacing":"-0.03em","fontWeight":"700"}],"body-md":["0.9375rem",{"lineHeight":"1.55","letterSpacing":"0","fontWeight":"400"}],"display-sm":["2.25rem",{"lineHeight":"1.2","letterSpacing":"-0.02em","fontWeight":"600"}],"label-sm":["0.6875rem",{"lineHeight":"1.1","letterSpacing":"0.08em","fontWeight":"700"}],"label-md":["0.75rem",{"lineHeight":"1.2","letterSpacing":"0.05em","fontWeight":"600"}],"body-sm":["0.8125rem",{"lineHeight":"1.5","letterSpacing":"0.01em","fontWeight":"500"}],"headline-sm":["1.25rem",{"lineHeight":"1.4","letterSpacing":"-0.01em","fontWeight":"600"}],"body-lg":["1.125rem",{"lineHeight":"1.6","letterSpacing":"0","fontWeight":"400"}]}}}};</script></head><body class="bg-surface-container-lowest font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(33,84,163,0.06)]"><div class="h-20 w-full px-container-padding-mobile lg:px-container-padding-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-on-primary font-headline-sm font-bold shadow-[0_4px_12px_rgba(241,115,0,0.25)]">C</div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-secondary font-bold tracking-tight">Clarinha IA</span><span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">Fase 2 • Cognição &amp; Dados</span></div></div><div class="hidden sm:flex items-center gap-space-2xs px-space-sm py-space-2xs rounded-full bg-secondary/10 text-secondary"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span><span class="font-label-sm text-label-sm uppercase font-semibold">Produção Ativa</span></div></div><nav class="flex items-center gap-space-xs" data-active-classes="bg-primary-container text-on-primary font-bold shadow-[0_2px_8px_rgba(241,115,0,0.2)]"><a class="px-space-md py-space-xs rounded-lg font-label-md text-label-md transition-all text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface" data-path="visao-geral-kpis" href="#">1. Visão Geral &amp; KPIs</a><a class="px-space-md py-space-xs rounded-lg font-label-md text-label-md transition-all text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface" data-path="arquitetura-dw-jobs" href="#">2. Arquitetura DW &amp; Jobs de Dados</a></nav><div class="flex items-center gap-space-md"><div class="hidden xl:flex flex-col text-right"><span class="font-label-md text-label-md text-on-surface font-semibold">Governança Executiva</span><span class="font-label-sm text-label-sm text-on-surface-variant">Atualizado há 4 min</span></div><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1VD-FrtRp46YKDkYjlO-UkoYz3F_WRS5Ilsh_tCETxJ6FphrJM481hVu9h0Tj23J8CmH3PQAgoyUKcs396mb9NEI0-_VxtXjIKlGfYkTnyziFxrq2aIwaqHXoqKLRv_s-gNqs94P0BL86BKcVGLMrvpafbNsLK1cO64-QrfjWZuFYsTvstSRKetmmHTV19gw12H0Q7OL55a_4-5_bajfehKzGGRiCHdOBcgUi7TVd959WV1JgsmILB8Ol-XbVpxJvlLnMfpFoDzlw"></div></div></header><main class="w-full pt-20 bg-surface-container-lowest min-h-screen"><div class="flex flex-col w-full">
+<!-- Top Ambient Glow Layer (Bespoke AI Field) -->
+<div class="relative w-full px-container-padding-mobile lg:px-container-padding-desktop pt-space-xl pb-space-3xl overflow-hidden">
+<!-- Ambient high-tech background aura -->
+<div class="absolute -top-24 right-1/4 w-96 h-96 bg-secondary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute top-32 right-12 w-80 h-80 bg-primary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<!-- SECTION 1: HERO & EXECUTIVE VISION -->
+<div class="relative w-full bg-surface-container-low rounded-xl shadow-xl overflow-hidden mb-space-2xl">
+<!-- High-tech grid overlay -->
+<div class="absolute inset-0 opacity-20 pointer-events-none bg-[radial-gradient(#2c5cac_1px,transparent_1px)] [background-size:20px_20px]"></div>
+<div class="relative grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center p-space-lg lg:p-space-2xl">
+<!-- Left: Textual Briefing -->
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<!-- Phase Badge Cluster -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="inline-flex items-center gap-space-2xs px-space-sm py-space-2xs rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm uppercase tracking-wider shadow-sm">
+<span class="material-symbols-outlined text-sm">cloud_sync</span>
+              Fase 2 • Cognição DW
+            </span>
+<span class="inline-flex items-center gap-space-2xs px-space-sm py-space-2xs rounded-full bg-primary-container/15 text-primary font-label-sm text-label-sm uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-ping"></span>
+              Ambiente: Produção (Homologação em Campo)
+            </span>
+<span class="hidden sm:inline-flex items-center gap-space-2xs px-space-sm py-space-2xs rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-xs">tune</span> Validação Contínua
+            </span>
+</div>
+<!-- Headline & Pitch -->
+<div class="flex flex-col gap-space-2xs">
+<h1 class="font-display-lg text-display-sm lg:text-display-lg text-secondary leading-tight tracking-tight">
+              Clarinha IA <span class="text-primary-container">—</span> Inteligência Comercial Ativa Direto no DW
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface max-w-3xl">
+              Agente corporativo de inteligência artificial que consulta dados em tempo real diretamente no Data Warehouse, traduzindo métricas analíticas em ações táticas imediatas para a força de vendas.
+            </p>
+</div>
+<!-- Field Validation Callout Card -->
+<div class="p-space-md rounded-lg bg-surface-container-lowest shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm mt-space-2xs">
+<div class="flex items-start gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-secondary uppercase font-bold">Transição Ativa: Testes → Campo Operacional</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">
+                  Garantia de assertividade matemática, calibragem de filtros e mitigação de inconsistências em tempo real com os usuários-chave.
+                </span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs shrink-0 self-end sm:self-center px-space-sm py-space-2xs rounded-lg bg-surface-container text-right"><span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span><span class="font-label-sm text-label-sm text-primary font-bold uppercase leading-tight">Fase de Homologação<br><span class="text-on-surface-variant font-medium lowercase">métricas em calibração</span></span></div>
+</div>
+<!-- Fast Quick-Stats Strip -->
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-space-sm pt-space-2xs">
+<div class="flex flex-col p-space-sm bg-surface-container rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Pipeline Latency</span>
+<span class="font-headline-sm text-headline-sm text-secondary font-bold">&lt; 1.2s</span>
+<span class="font-body-sm text-body-sm text-primary font-medium">Direct DW Querying</span>
+</div>
+<div class="flex flex-col p-space-sm bg-surface-container rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Ciclo de Disparo</span>
+<span class="font-headline-sm text-headline-sm text-secondary font-bold">Semanal</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Segundas &amp; Terças</span>
+</div>
+<div class="col-span-2 sm:col-span-1 flex flex-col p-space-sm bg-surface-container rounded-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Cobertura Comercial</span>
+<span class="font-headline-sm text-headline-sm text-secondary font-bold">100%</span>
+<span class="font-body-sm text-body-sm text-tertiary font-medium">Frango, GDA &amp; Regional</span>
+</div>
+</div>
+</div>
+<!-- Right: Mascote & AI Hub Showcase -->
+<div class="lg:col-span-4 flex flex-col items-center justify-center relative">
+<div class="relative w-72 h-72 sm:w-80 sm:h-80 flex items-center justify-center">
+<!-- Pulsing ambient glow ring behind mascot -->
+<div class="absolute inset-0 rounded-full bg-gradient-to-tr from-primary-container/20 to-secondary-container/30 blur-2xl animate-pulse"></div>
+<!-- Concentric Tech Orbit SVG -->
+<svg class="absolute inset-0 w-full h-full text-secondary/15 animate-spin" fill="none" style="animation-duration: 40s;" viewBox="0 0 300 300">
+<circle cx="150" cy="150" r="140" stroke="currentColor" stroke-dasharray="6 8" stroke-width="1.5"></circle>
+<circle cx="150" cy="150" r="115" stroke="currentColor" stroke-dasharray="2 4" stroke-width="1"></circle>
+</svg>
+<!-- Mascote Clarinha -->
+<img alt="Clarinha IA Mascot" class="relative z-10 w-64 h-64 object-contain drop-shadow-[0_12px_24px_rgba(0,117,190,0.18)] hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoNBw-0llgnXhZbygU9IEG850Sb7ZttkdWmuHlC1KgHBbOCGkiT_5WM0ZOCIS5WdNSwq5L_CwpdzH4FveeWNrpxJ6BRrJPklYRykBzfuVrND6C8Bb5eeJcHH7_4NDDtiKHGQIpWoOQoniFy-8CG3u_ZhfkwJOg7d70csc1jZ_B-Q-mg_CNXoO8P-N_gDT_lPHdvZb2ycx-Wm4ZkUIKayxHtqcruY_Oj25AglFYUwXuEy_uPNVkrsgy-8UQKs9Rdlf4dA">
+<!-- Floating Micro Floating Tag 1 -->
+<div class="absolute -top-2 right-4 z-20 px-space-sm py-space-2xs rounded-lg bg-surface-container-lowest shadow-md flex items-center gap-space-2xs">
+<span class="material-symbols-outlined text-primary-container text-sm">psychology</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">NLP Cognitivo</span>
+</div>
+<!-- Floating Micro Floating Tag 2 -->
+<div class="absolute -bottom-2 left-2 z-20 px-space-sm py-space-2xs rounded-lg bg-surface-container-lowest shadow-md flex items-center gap-space-2xs">
+<span class="material-symbols-outlined text-secondary text-sm">database</span>
+<span class="font-label-sm text-label-sm text-on-surface font-bold">Data Warehouse v2</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 2: STAKEHOLDERS & AUDIENCE IMPACT -->
+<div class="w-full flex flex-col gap-space-lg mb-space-3xl">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs text-primary font-label-md text-label-md uppercase tracking-wider font-bold">
+<span class="material-symbols-outlined text-sm">groups</span>
+            Camadas de Consumo Operacional
+          </div>
+<h2 class="font-headline-lg text-headline-lg text-secondary font-bold">
+            Público-Alvo Impactado &amp; Perfis de Atendimento
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+            A Clarinha IA personaliza granularidade analítica, métricas de gap e velocidade de entrega conforme o papel corporativo de cada destinatário.
+          </p>
+</div>
+<div class="flex items-center gap-space-xs bg-surface-container px-space-md py-space-2xs rounded-full shrink-0">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-label-sm text-label-sm text-on-surface font-semibold">4 Níveis de Distribuição Multicanal</span>
+</div>
+</div>
+<!-- 4 Stakeholder Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Stakeholder 1: Vendedores -->
+<div class="group relative bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-primary-container"></div>
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="w-12 h-12 rounded-lg bg-primary-fixed/50 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-2xl">point_of_sale</span>
+</div>
+<span class="px-space-xs py-space-2xs rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase font-bold">
+                Operação de Ponta
+              </span>
+</div>
+<div class="flex flex-col gap-space-2xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-primary transition-colors">
+                Vendedores
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Acesso direto a rotinas diárias personalizadas, alertas matinais de gap de meta individual e clientes prioritários a positivar no ciclo.
+              </p>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg flex flex-col gap-space-2xs">
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase">Entregáveis-Chave</span>
+<ul class="flex flex-col gap-1 text-on-surface font-body-sm text-body-sm">
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-xs text-primary-container">check_circle</span>
+                  Positivações Pendentes da Semana
+                </li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-xs text-primary-container">check_circle</span>
+                  Radar de Clientes em Risco (60 dias)
+                </li>
+</ul>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase">Canal Principal</span>
+<span class="font-label-md text-label-md text-secondary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">chat</span> WhatsApp Bot &amp; Push
+            </span>
+</div>
+</div>
+<!-- Stakeholder 2: Analistas de Inteligência -->
+<div class="group relative bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-secondary"></div>
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="w-12 h-12 rounded-lg bg-secondary-fixed/50 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-2xl">query_stats</span>
+</div>
+<span class="px-space-xs py-space-2xs rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase font-bold">
+                Data Science &amp; BI
+              </span>
+</div>
+<div class="flex flex-col gap-space-2xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-secondary transition-colors">
+                Analistas de Inteligência
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Estudo aprofundado do comportamento da base ativa, padrões sazonais de queda de compra e cruzamentos estatísticos no DW.
+              </p>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg flex flex-col gap-space-2xs">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase">Entregáveis-Chave</span>
+<ul class="flex flex-col gap-1 text-on-surface font-body-sm text-body-sm">
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-xs text-secondary">check_circle</span>
+                  Matriz de Churn e Migração de Faixas
+                </li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-xs text-secondary">check_circle</span>
+                  Modelos de Reativação Automática
+                </li>
+</ul>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase">Canal Principal</span>
+<span class="font-label-md text-label-md text-secondary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">terminal</span> Datashare &amp; Dashboards
+            </span>
+</div>
+</div>
+<!-- Stakeholder 3: Gerentes Comerciais -->
+<div class="group relative bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-tertiary"></div>
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="w-12 h-12 rounded-lg bg-tertiary-fixed/50 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-2xl">supervisor_account</span>
+</div>
+<span class="px-space-xs py-space-2xs rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase font-bold">
+                Gestão Tática
+              </span>
+</div>
+<div class="flex flex-col gap-space-2xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-tertiary transition-colors">
+                Gerentes Comerciais
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Acompanhamento tático de performance das equipes por praça, distribuição de clientes inativos e positivações consolidadas por rota.
+              </p>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg flex flex-col gap-space-2xs">
+<span class="font-label-sm text-label-sm text-tertiary font-bold uppercase">Entregáveis-Chave</span>
+<ul class="flex flex-col gap-1 text-on-surface font-body-sm text-body-sm">
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-xs text-tertiary">check_circle</span>
+                  Positivação Frango vs. GDA
+                </li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-xs text-tertiary">check_circle</span>
+                  Gaps de Cobrança por Rota Comercial
+                </li>
+</ul>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase">Canal Principal</span>
+<span class="font-label-md text-label-md text-secondary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">mail</span> Relatório Semanal Tático
+            </span>
+</div>
+</div>
+<!-- Stakeholder 4: Diretoria Comercial -->
+<div class="group relative bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-secondary-container"></div>
+<div class="flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-2xl">corporate_fare</span>
+</div>
+<span class="px-space-xs py-space-2xs rounded bg-surface-container text-on-surface-variant font-label-sm text-label-sm uppercase font-bold">
+                C-Level &amp; Board
+              </span>
+</div>
+<div class="flex flex-col gap-space-2xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold group-hover:text-secondary transition-colors">
+                Diretoria Comercial
+              </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Visão consolidada executiva de faturamento líquido, volume acumulado em toneladas e índices corporativos de retenção de carteira.
+              </p>
+</div>
+<div class="p-space-sm bg-surface-container-low rounded-lg flex flex-col gap-space-2xs">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase">Entregáveis-Chave</span>
+<ul class="flex flex-col gap-1 text-on-surface font-body-sm text-body-sm">
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-xs text-secondary">check_circle</span>
+                  Visão Macro R$ / Toneladas vs. Target
+                </li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-xs text-secondary">check_circle</span>
+                  Forecast de Atingimento Mensal
+                </li>
+</ul>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between text-on-surface-variant">
+<span class="font-label-sm text-label-sm uppercase">Canal Principal</span>
+<span class="font-label-md text-label-md text-secondary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">monitoring</span> Executive Mobile Dashboard
+            </span>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 3: STATUS DOS RELATÓRIOS E KPIS DE VENDAS -->
+<div class="w-full flex flex-col gap-space-lg">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm">
+<div class="flex flex-col">
+<div class="flex items-center gap-space-xs text-primary font-label-md text-label-md uppercase tracking-wider font-bold">
+<span class="material-symbols-outlined text-sm">schedule_send</span>
+            Esteiras de Notificação &amp; Rotinas IA
+          </div>
+<h2 class="font-headline-lg text-headline-lg text-secondary font-bold">
+            Status dos Relatórios &amp; KPIs Operacionais
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+            Monitoramento das rotinas automáticas de extração DW, processamento por LLM e disparo estruturado para as equipes em campo.
+          </p>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="px-space-md py-space-xs rounded-lg bg-surface-container text-secondary font-label-md text-label-md font-bold hover:bg-surface-container-high transition-colors flex items-center gap-space-2xs">
+<span class="material-symbols-outlined text-sm">history</span> Log de Execuções
+          </button>
+<button class="px-space-md py-space-xs rounded-lg bg-primary-container text-on-primary font-label-md text-label-md font-bold hover:bg-primary transition-colors flex items-center gap-space-2xs shadow-sm">
+<span class="material-symbols-outlined text-sm">play_arrow</span> Disparo Manual Teste
+          </button>
+</div>
+</div>
+<!-- Report Cards Grid (Asymmetric Layout) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+<!-- CARD 1: RELATÓRIO DE POSITIVAÇÕES -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
+<div class="flex flex-col gap-space-md">
+<!-- Header Row -->
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-secondary-fixed/40 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">playlist_add_check_circle</span>
+</div>
+<div class="flex flex-col">
+<h4 class="font-headline-sm text-headline-sm text-secondary font-bold">Relatório de Positivações</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Resumo detalhado da carteira ativa</span>
+</div>
+</div>
+</div>
+<!-- Schedule & Status Badges -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="px-space-sm py-space-2xs rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm uppercase font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">calendar_today</span> Disparo Terças-Feiras
+              </span>
+<span class="px-space-sm py-space-2xs rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm uppercase font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">build</span> Em Ajuste de Configuração
+              </span>
+</div>
+<!-- Technical Detail Box -->
+<div class="p-space-md rounded-lg bg-surface-container-low flex flex-col gap-space-sm">
+<div class="flex items-center justify-between"><span class="font-label-md text-label-md text-on-surface font-bold uppercase">Visão da Carteira</span><div class="flex items-center gap-space-2xs"><span class="px-space-xs py-space-2xs rounded bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-bold uppercase">Mock de Demonstração</span><span class="font-label-sm text-label-sm text-primary font-bold">Filtro Dual</span></div></div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Geração do resumo em formato <strong>Geral</strong> e segmentado individualmente por <strong>Frango</strong> e <strong>GDA (Garantia de Abastecimento)</strong>.
+              </p>
+<!-- Progress & Target Mini-Bar -->
+<div class="flex flex-col gap-1 pt-space-2xs">
+<div class="flex justify-between font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Regra de Clientes Não Positivados</span>
+<span class="text-primary font-bold">85% Ajustado</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 85%"></div>
+</div>
+</div>
+</div>
+<!-- Inline SVG Infographic: Positivação Split -->
+<div class="p-space-sm bg-surface-container rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<!-- Mini Donut SVG -->
+<svg class="w-12 h-12 -rotate-90 shrink-0" viewBox="0 0 36 36">
+<circle cx="18" cy="18" fill="none" r="14" stroke="#e3e2e2" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="none" r="14" stroke="#0062a0" stroke-dasharray="58, 100" stroke-linecap="round" stroke-width="4"></circle>
+<circle cx="18" cy="18" fill="none" r="14" stroke="#f17300" stroke-dasharray="30, 100" stroke-dashoffset="-58" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface font-bold">Carteira Mapeada</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Frango: 58% • GDA: 30%</span>
+</div>
+</div>
+<span class="font-headline-sm text-headline-sm text-secondary font-bold">88%</span>
+</div>
+</div>
+<!-- Bottom Micro Tag -->
+<div class="pt-space-md mt-space-sm flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span class="">Orquestrador DW: Job #210</span>
+<span class="text-primary font-bold">Deploy previsto: 48h</span>
+</div>
+</div>
+<!-- CARD 2: CLIENTES SEM COMPRAS (RISCO DE INATIVAÇÃO) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-xl transition-all flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 right-0 w-24 h-24 bg-primary-fixed/20 rounded-bl-full pointer-events-none"></div>
+<div class="flex flex-col gap-space-md">
+<!-- Header Row -->
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed/50 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">notification_important</span>
+</div>
+<div class="flex flex-col">
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Clientes Sem Compras</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Mitigação de Churn Cadastral</span>
+</div>
+</div>
+</div>
+<!-- Schedule & Status Badges -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="px-space-sm py-space-2xs rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm uppercase font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">today</span> Disparo Segundas-Feiras
+              </span>
+<span class="px-space-sm py-space-2xs rounded-full bg-primary-container/15 text-primary font-label-sm text-label-sm uppercase font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">timer</span> Alerta 60 Dias
+              </span>
+</div>
+<!-- Technical Detail Box -->
+<div class="p-space-md rounded-lg bg-surface-container-low flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-bold uppercase">Gatilho de Risco Crítico</span>
+<span class="font-label-sm text-label-sm text-error font-bold">Anti-Inativação</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Varredura preventiva em clientes com <strong>2 meses consecutivos sem compras</strong>, acionando o consultor antes do bloqueio sistêmico definitivo.
+              </p>
+<!-- KPI Comparison Row -->
+<div class="grid grid-cols-2 gap-space-xs pt-space-2xs"><div class="p-space-xs rounded bg-surface-container flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Janela de Ação</span><span class="font-label-md text-label-md text-secondary font-bold">Definido por Perfil</span></div><div class="p-space-xs rounded bg-surface-container flex flex-col"><span class="font-label-sm text-label-sm text-on-surface-variant">Taxa de Resgate</span><span class="font-label-md text-label-md text-primary font-bold">Em Aferição de Campo</span></div></div>
+</div>
+<!-- Inline Flow Timeline Graphic -->
+<div class="p-space-sm bg-surface-container rounded-lg flex items-center justify-between gap-space-2xs">
+<div class="flex items-center gap-space-2xs font-label-sm text-label-sm text-on-surface-variant">
+<span class="w-6 h-6 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-secondary">1</span>
+<span class="">DW 60d</span>
+</div>
+<span class="text-primary-container font-bold">→</span>
+<div class="flex items-center gap-space-2xs font-label-sm text-label-sm text-on-surface-variant">
+<span class="w-6 h-6 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold">2</span>
+<span class="">Clarinha IA</span>
+</div>
+<span class="text-primary-container font-bold">→</span>
+<div class="flex items-center gap-space-2xs font-label-sm text-label-sm text-on-surface-variant">
+<span class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center font-bold">3</span>
+<span class="">Resgate</span>
+</div>
+</div>
+</div>
+<!-- Bottom Micro Tag -->
+<div class="pt-space-md mt-space-sm flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span class="">Frequência: Semanal (Segunda)</span>
+<span class="text-secondary font-bold">Ativo em Piloto</span>
+</div>
+</div>
+<!-- CARD 3: FATURAMENTO & VOLUME -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm hover:shadow-xl transition-all flex flex-col justify-between">
+<div class="flex flex-col gap-space-md">
+<!-- Header Row -->
+<div class="flex items-start justify-between gap-space-xs">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<div class="flex flex-col">
+<h4 class="font-headline-sm text-headline-sm text-secondary font-bold">Faturamento &amp; Volume</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Métricas Financeiras &amp; Tonelagem</span>
+</div>
+</div>
+</div>
+<!-- Schedule & Status Badges -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="px-space-sm py-space-2xs rounded-full bg-secondary text-on-secondary font-label-sm text-label-sm uppercase font-bold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-xs">check</span> Ativo &amp; Operando
+              </span>
+<span class="px-space-sm py-space-2xs rounded-full bg-surface-container-high text-on-surface font-label-sm text-label-sm uppercase font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">auto_fix_high</span> Refinamento Regional
+              </span>
+</div>
+<!-- Technical Detail Box -->
+<div class="p-space-md rounded-lg bg-surface-container-low flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface font-bold uppercase">Cálculo de Precisão</span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">Em Otimização</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Rotinas de faturamento já em produção ativa. Sprint atual focado no cálculo exato de <strong>percentuais de metas atingidas</strong> e segmentação refinada por filial regional.
+              </p>
+<!-- Inline Metric Sparkline Display -->
+<div class="flex items-end justify-between pt-space-2xs"><div class="flex flex-col gap-space-2xs w-full"><span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Volume &amp; Faturamento Consolidado</span><div class="flex items-center justify-between"><span class="font-label-md text-label-md text-secondary font-bold flex items-center gap-1"><span class="material-symbols-outlined text-sm text-secondary">sync</span> Em cálculo direto pelo DW</span><span class="font-label-sm text-label-sm text-on-surface-variant">Acompanhamento diário ativo</span></div></div></div>
+</div>
+<!-- Inline Key Fixes In Flight -->
+<div class="p-space-sm bg-surface-container rounded-lg flex flex-col gap-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase font-semibold">Backlog de Precisão Fase 2</span>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface">
+<span class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span> % Metas Atingidas
+                </span>
+<span class="font-label-sm text-label-sm text-primary font-bold">Validação QA</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-on-surface">
+<span class="flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Filtro de Praças Regionais
+                </span>
+<span class="font-label-sm text-label-sm text-secondary font-bold">Em Homologação</span>
+</div>
+</div>
+</div>
+<!-- Bottom Micro Tag -->
+<div class="pt-space-md mt-space-sm flex items-center justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span class="">Disparo Diário / Semanal</span>
+<span class="text-secondary font-bold">Status: Produção</span>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 4: ARCHITECTURE ROADMAP STRIP & CALL TO ACTION -->
+<div class="w-full mt-space-3xl p-space-xl rounded-xl bg-surface-container flex flex-col lg:flex-row items-center justify-between gap-space-lg">
+<div class="flex items-center gap-space-md">
+<div class="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center text-on-secondary shadow-md shrink-0">
+<span class="material-symbols-outlined text-3xl">account_tree</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold tracking-wider">Próximo Módulo de Governança</span>
+<h3 class="font-headline-sm text-headline-sm text-secondary font-bold">
+            Verifique os Jobs de Dados &amp; Conexões no Data Warehouse
+          </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Explore a topologia detalhada das tabelas Fato, Staging e orquestradores de carga em lote e streaming da Fase 2.
+          </p>
+</div>
+</div>
+<div class="flex items-center gap-space-md shrink-0">
+<a class="px-space-lg py-space-sm rounded-lg bg-secondary text-on-secondary font-label-md text-label-md font-bold hover:bg-on-secondary-fixed transition-colors flex items-center gap-space-2xs shadow-md" data-path="arquitetura-dw-jobs" href="#">
+<span class="">Acessar Arquitetura DW &amp; Jobs</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div></main><footer class="w-full bg-surface-container-low mt-space-3xl"><div class="w-full px-container-padding-mobile lg:px-container-padding-desktop py-space-2xl flex flex-col md:flex-row items-center justify-between gap-space-lg"><div class="flex flex-col md:flex-row items-center gap-space-md"><div class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-secondary text-base">verified_user</span><span class="font-headline-sm text-headline-sm text-secondary">Clarinha IA Ecosystem</span></div><span class="hidden md:inline text-outline-variant">•</span><span class="font-body-sm text-body-sm text-on-surface-variant">Arquitetura Corporativa de Inteligência &amp; Governança de Dados</span></div><div class="flex flex-wrap items-center justify-center gap-space-lg font-label-sm text-label-sm text-on-surface-variant"><span class="flex items-center gap-space-2xs"><span class="w-1.5 h-1.5 rounded-full bg-primary"></span> Release v2.4.0 (Enterprise)</span><span class="">LGPD &amp; ISO/IEC 42001 Compliant</span><span class="text-on-surface font-semibold">© 2025 Todos os direitos reservados.</span></div></div></footer>
+
+</body></html>
